@@ -1,0 +1,3 @@
+
+from techind.techind.simpleMovingAverage import simpleMovingAverage as simpleMovingAverage
+from techind.techind.simpleMovingAverage import exponentialMovingAverage as exponentialMovingAverage
