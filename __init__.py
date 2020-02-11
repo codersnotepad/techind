@@ -1,5 +1,0 @@
-
-from techind.techind.exponentialMovingAverage import exponentialMovingAverage as exponentialMovingAverage
-from techind.techind.simpleMovingAverage import simpleMovingAverage as simpleMovingAverage
-from techind.techind.weightedMovingAverage import weightedMovingAverage as weightedMovingAverage
-del techind
