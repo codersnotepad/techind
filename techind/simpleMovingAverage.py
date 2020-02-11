@@ -34,7 +34,7 @@ def simpleMovingAverage(period, data):
     #--- update zeros with nan
     for i in range(len(data)):
 
-        if i < firstNonNan+n:
+        if i < firstNonNan+period:
 
             np.put(out,i,np.nan)
 

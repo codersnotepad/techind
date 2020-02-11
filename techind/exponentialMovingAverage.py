@@ -24,7 +24,7 @@ def exponentialMovingAverage(period, data):
             break
 
     #--- define variables
-    sma = data[firstNonNan:p+firstNonNan].sum()/period      # the first simple moving average
+    sma = data[firstNonNan:period+firstNonNan].sum()/period      # the first simple moving average
     m = 2/(period+1)                                      # weighting factor
 
     #--- define output array
