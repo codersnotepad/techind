@@ -14,18 +14,17 @@ if missing_dependencies:
     )
 del hard_dependencies, dependency, missing_dependencies
 
-
+from techind.doubleExponentialMovingAverage import (
+    doubleExponentialMovingAverage as doubleExponentialMovingAverage,
+)
 from techind.exponentialMovingAverage import (
     exponentialMovingAverage as exponentialMovingAverage,
 )
 from techind.simpleMovingAverage import simpleMovingAverage as simpleMovingAverage
-from techind.weightedMovingAverage import weightedMovingAverage as weightedMovingAverage
 from techind.triangularMovingAverage import (
     triangularMovingAverage as triangularMovingAverage,
-)
-from techind.doubleExponentialMovingAverage import (
-    doubleExponentialMovingAverage as doubleExponentialMovingAverage,
 )
 from techind.trippleExponentialMovingAverage import (
     trippleExponentialMovingAverage as trippleExponentialMovingAverage,
 )
+from techind.weightedMovingAverage import weightedMovingAverage as weightedMovingAverage
