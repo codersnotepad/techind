@@ -1,4 +1,4 @@
-def simpleMovingAverageNaN(period, data):
+def simpleMovingAverage(period, data):
 
     # --- Simple Moving Average
     # data: array, time series data e.g. daily close prices

@@ -20,3 +20,12 @@ from techind.exponentialMovingAverage import (
 )
 from techind.simpleMovingAverage import simpleMovingAverage as simpleMovingAverage
 from techind.weightedMovingAverage import weightedMovingAverage as weightedMovingAverage
+from techind.triangularMovingAverage import (
+    triangularMovingAverage as triangularMovingAverage,
+)
+from techind.doubleExponentialMovingAverage import (
+    doubleExponentialMovingAverage as doubleExponentialMovingAverage,
+)
+from techind.trippleExponentialMovingAverage import (
+    trippleExponentialMovingAverage as trippleExponentialMovingAverage,
+)

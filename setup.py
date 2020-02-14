@@ -7,7 +7,7 @@ requirements = ["numpy>=1.18.1"]
 
 setup(
     name="techind",
-    version="0.0.4",
+    version="0.0.5",
     author="Timote WB",
     author_email="timote.wb@gmail.com",
     description="Collection of technical indicators for financial time series analysis.",
