@@ -20,6 +20,9 @@ from techind.doubleExponentialMovingAverage import (
 from techind.exponentialMovingAverage import (
     exponentialMovingAverage as exponentialMovingAverage,
 )
+from techind.kaufmanAdaptiveMovingAverage import (
+    kaufmanAdaptiveMovingAverage as kaufmanAdaptiveMovingAverage,
+)
 from techind.simpleMovingAverage import simpleMovingAverage as simpleMovingAverage
 from techind.triangularMovingAverage import (
     triangularMovingAverage as triangularMovingAverage,
