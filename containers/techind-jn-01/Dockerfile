@@ -18,6 +18,6 @@ RUN pip install --requirement /tmp/requirements.txt && \
 
 RUN pip install --index-url https://test.pypi.org/simple/ \
     --extra-index-url https://pypi.org/simple \
-    techind==0.0.3
+    techind==0.0.4
 
 RUN ln -sv /home/jovyan/CPU /mnt/ns01
