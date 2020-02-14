@@ -1,6 +1,6 @@
-def simpleMovingAverageNaN(period, data):
+def triangularMovingAverage(period, data):
 
-    # --- Simple Moving Average
+    # --- Triangular Moving Average
     # data: array, time series data e.g. daily close prices
     # period: integer, number of periods form time series array to include in calculation
 
@@ -28,13 +28,18 @@ def simpleMovingAverageNaN(period, data):
     ret[period:] = ret[period:] - ret[:-period]
     ret = ret[period - 1 :] / period
 
+    # --- calculate SMA of SMA
+    ret_ss = np.nancumsum(ret, dtype=float)
+    ret_ss[period:] = ret_ss[period:] - ret_ss[:-period]
+    ret_ss = ret_ss[period - 1 :] / period
+
     # --- return array of number the same length as the input
-    ret = np.append(np.zeros(period - 1) + np.nan, ret)
+    ret = np.append(np.zeros(2 * period - 2) + np.nan, ret_ss)
 
     # --- update zeros with nan
     for i in range(len(data)):
 
-        if i < firstNonNan + period:
+        if i < firstNonNan + (period * 2):
 
             np.put(ret, i, np.nan)
 
