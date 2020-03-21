@@ -23,6 +23,9 @@ from techind.exponentialMovingAverage import (
 from techind.kaufmanAdaptiveMovingAverage import (
     kaufmanAdaptiveMovingAverage as kaufmanAdaptiveMovingAverage,
 )
+from techind.mesaAdaptiveMovingAverage import (
+    mesaAdaptiveMovingAverage as mesaAdaptiveMovingAverage,
+)
 from techind.simpleMovingAverage import simpleMovingAverage as simpleMovingAverage
 from techind.triangularMovingAverage import (
     triangularMovingAverage as triangularMovingAverage,

@@ -24,20 +24,24 @@ def kaufmanAdaptiveMovingAverage(period, fastEMA, slowEMA, data):
     dataLength = len(data)
 
     # --- define arrays
-    change = np.zeros(dataLength)
-    prev_cur = np.zeros(dataLength)
-    volatility = np.zeros(dataLength)
-    # --- efficiency ratio
-    er = np.zeros(dataLength)
-    # --- smoothing constant
-    sc = np.zeros(dataLength)
-    # --- kama
-    kama = np.zeros(dataLength)
+    # change vs data point `period` in past
+    change = np.zeros(len(data))
+    # change since last data point
+    prev_cur = np.zeros(len(data))
+    # sum of last `period` prev_cur values
+    volatility = np.zeros(len(data))
+    # efficiency ratio
+    er = np.zeros(len(data))
+    # smoothing constant
+    sc = np.zeros(len(data))
+    # kama
+    kama = np.zeros(len(data))
 
     # --- calculate efficiency ratio
     for i in range(0, dataLength):
 
         if i <= firstNonNan:
+
             prev_cur[i] = np.nan
             change[i] = np.nan
             volatility[i] = np.nan
@@ -46,6 +50,7 @@ def kaufmanAdaptiveMovingAverage(period, fastEMA, slowEMA, data):
             kama[i] = np.nan
 
         elif i > lastNonNan:
+
             prev_cur[i] = np.nan
             change[i] = np.nan
             volatility[i] = np.nan
@@ -54,8 +59,8 @@ def kaufmanAdaptiveMovingAverage(period, fastEMA, slowEMA, data):
             kama[i] = np.nan
 
         elif firstNonNan + period - 1 > i > firstNonNan:
-            prev_cur[i] = math.sqrt((data[i] - data[i - 1]) ** 2)
 
+            prev_cur[i] = math.sqrt((data[i] - data[i - 1]) ** 2)
             change[i] = np.nan
             volatility[i] = np.nan
             er[i] = np.nan
@@ -63,31 +68,25 @@ def kaufmanAdaptiveMovingAverage(period, fastEMA, slowEMA, data):
             kama[i] = np.nan
 
         elif i == firstNonNan + period - 1:
+
             prev_cur[i] = math.sqrt((data[i] - data[i - 1]) ** 2)
-
             change[i] = math.sqrt((data[i - 1] - data[i - period]) ** 2)
-
-            # --- first kama value is the sma
-            kama[i] = sum(data[i : i + period]) / period
-
             volatility[i] = np.nan
             er[i] = np.nan
             sc[i] = np.nan
+            # --- first kama value is the sma
+            kama[i] = sum(data[i : i + period]) / period
 
         elif i > firstNonNan + period - 1:
+
             prev_cur[i] = math.sqrt((data[i] - data[i - 1]) ** 2)
-
             change[i] = math.sqrt((data[i] - data[i - period]) ** 2)
-
             volatility[i] = sum(prev_cur[i - period + 1 : i + 1])
-
             er[i] = change[i] / volatility[i]
-
             sc[i] = (
                 er[i] * ((2 / (fastEMA + 1)) - (2 / (slowEMA + 1)))
                 + (2 / (slowEMA + 1))
             ) ** 2
-
             kama[i] = kama[i - 1] + sc[i] * (data[i] - kama[i - 1])
 
     return kama
