@@ -1,5 +1,5 @@
 # Let users know if they're missing any of our hard dependencies
-hard_dependencies = ["numpy"]
+hard_dependencies = ["numpy","math"]
 missing_dependencies = []
 
 for dependency in hard_dependencies:
@@ -34,3 +34,4 @@ from techind.trippleExponentialMovingAverage import (
     trippleExponentialMovingAverage as trippleExponentialMovingAverage,
 )
 from techind.weightedMovingAverage import weightedMovingAverage as weightedMovingAverage
+from techind.t3MovingAverage import t3MovingAverage as t3MovingAverage
