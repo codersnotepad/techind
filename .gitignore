@@ -134,3 +134,7 @@ taxis/
 venv/
 .DS_Store
 .local
+
+
+# user mods
+desktop.ini
