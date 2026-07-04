@@ -1,5 +1,26 @@
 # Let users know if they're missing any of our hard dependencies
-hard_dependencies = ["numpy","math"]
+from techind.t3MovingAverage import t3MovingAverage as t3MovingAverage
+from techind.weightedMovingAverage import weightedMovingAverage as weightedMovingAverage
+from techind.trippleExponentialMovingAverage import (
+    trippleExponentialMovingAverage as trippleExponentialMovingAverage,
+)
+from techind.triangularMovingAverage import (
+    triangularMovingAverage as triangularMovingAverage,
+)
+from techind.simpleMovingAverage import simpleMovingAverage as simpleMovingAverage
+from techind.mesaAdaptiveMovingAverage import (
+    mesaAdaptiveMovingAverage as mesaAdaptiveMovingAverage,
+)
+from techind.kaufmanAdaptiveMovingAverage import (
+    kaufmanAdaptiveMovingAverage as kaufmanAdaptiveMovingAverage,
+)
+from techind.exponentialMovingAverage import (
+    exponentialMovingAverage as exponentialMovingAverage,
+)
+from techind.doubleExponentialMovingAverage import (
+    doubleExponentialMovingAverage as doubleExponentialMovingAverage,
+)
+hard_dependencies = ["numpy", "math"]
 missing_dependencies = []
 
 for dependency in hard_dependencies:
@@ -10,28 +31,7 @@ for dependency in hard_dependencies:
 
 if missing_dependencies:
     raise ImportError(
-        "Unable to import required dependencies:\n" + "\n".join(missing_dependencies)
+        "Unable to import required dependencies:\n" +
+        "\n".join(missing_dependencies)
     )
 del hard_dependencies, dependency, missing_dependencies
-
-from techind.doubleExponentialMovingAverage import (
-    doubleExponentialMovingAverage as doubleExponentialMovingAverage,
-)
-from techind.exponentialMovingAverage import (
-    exponentialMovingAverage as exponentialMovingAverage,
-)
-from techind.kaufmanAdaptiveMovingAverage import (
-    kaufmanAdaptiveMovingAverage as kaufmanAdaptiveMovingAverage,
-)
-from techind.mesaAdaptiveMovingAverage import (
-    mesaAdaptiveMovingAverage as mesaAdaptiveMovingAverage,
-)
-from techind.simpleMovingAverage import simpleMovingAverage as simpleMovingAverage
-from techind.triangularMovingAverage import (
-    triangularMovingAverage as triangularMovingAverage,
-)
-from techind.trippleExponentialMovingAverage import (
-    trippleExponentialMovingAverage as trippleExponentialMovingAverage,
-)
-from techind.weightedMovingAverage import weightedMovingAverage as weightedMovingAverage
-from techind.t3MovingAverage import t3MovingAverage as t3MovingAverage
