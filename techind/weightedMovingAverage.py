@@ -19,6 +19,8 @@ def weightedMovingAverage(period: int, data: npt.NDArray[np.float64 | np.integer
         An array containing the weighted moving average of the input data. Single-dimensional array of the same length as the input data, with NaN values for indices where the moving average cannot be computed due to insufficient data points.
 
     Notes:
+    -----
+    - The weight moving average puts more weight on recent data points, making it more responsive to changes in the data compared to a simple moving average.
     """
 
     # --- If ther data contains nan values then this function will fail. So we need to find the first and last non nan values in the data array.
