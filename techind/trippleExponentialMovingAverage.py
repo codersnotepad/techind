@@ -1,29 +1,39 @@
-def trippleExponentialMovingAverage(period, data):
+import numpy as np
+import numpy.typing as npt
+from techind.helper import get_valid_data_range as get_valid_data_range
 
-    # --- Tripple Exponential Moving Average
-    # data: array, time series data e.g. daily close prices
-    # period: integer, number of periods from time series array to include in calculation
 
-    import numpy as np
+def trippleExponentialMovingAverage(period: int, data: npt.NDArray[np.float64 | np.integer]) -> npt.NDArray[np.float64 | np.integer]:
+    """
+    Calculate the tripple exponential moving average (TEMA) of a given data array.
 
-    # --- get first non nan index
-    for i in range(len(data)):
+    Parameters:
+    ----------
+    period : int
+        The number of periods to use for the moving average. Single integer value.
+    data : NDArray[np.float64 | np.integer]
+        The input data array for which the tripple exponential moving average is to be calculated. Single-dimensional array.
 
-        if np.isnan(data[i]) == False:
+    Returns:
+    -------
+    NDArray[np.float64 | np.integer]
+        An array containing the tripple exponential moving average of the input data. Single-dimensional array of the same length as the input data, with NaN values for indices where the moving average cannot be computed due to insufficient data points.
 
-            firstNonNan = i
-            break
+    Notes:
+    -----
+    - The triple exponential moving average is a modified moving average designed to smooth large price fluctuations. This makes it easier to identify trends without the lag associated with traditional moving averages. It does this by taking multiple exponential moving averages (EMA) of the original EMA and subtracting out some of the lag.
+    """
+    # --- If the data contains nan values then this function will fail. So we need to find the first and last non nan values in the data array.
+    firstNonNan: int | None
+    lastNonNan: int | None
+    firstNonNan, lastNonNan = get_valid_data_range(data)
 
-    # --- get last non nan index
-    for i in reversed(range(len(data))):
-
-        if np.isnan(data[i]) == False:
-
-            lastNonNan = i
-            break
+    # --- we cooked if either is still None after the above.
+    if firstNonNan is None or lastNonNan is None:
+        return np.full(len(data), np.nan)
 
     s = (
-        data[firstNonNan : period + firstNonNan].sum() / period
+        data[firstNonNan: period + firstNonNan].sum() / period
     )  # the first simple moving average
     k = 2 / (period + 1)  # weighting factor
     d = (2 * period) - 1  # start of the DEMA

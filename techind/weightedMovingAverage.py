@@ -1,5 +1,6 @@
 import numpy as np
 import numpy.typing as npt
+from techind.helper import get_valid_data_range as get_valid_data_range
 
 
 def weightedMovingAverage(period: int, data: npt.NDArray[np.float64 | np.integer]) -> npt.NDArray[np.float64 | np.integer]:
@@ -23,21 +24,10 @@ def weightedMovingAverage(period: int, data: npt.NDArray[np.float64 | np.integer
     - The weight moving average puts more weight on recent data points, making it more responsive to changes in the data compared to a simple moving average.
     """
 
-    # --- If ther data contains nan values then this function will fail. So we need to find the first and last non nan values in the data array.
-    firstNonNan: int | None = None
-    for i in range(len(data)):
-
-        if not np.isnan(data[i]):
-
-            firstNonNan = i
-            break
-    lastNonNan: int | None = None
-    for i in reversed(range(len(data))):
-
-        if not np.isnan(data[i]):
-
-            lastNonNan = i
-            break
+    # --- If the data contains nan values then this function will fail. So we need to find the first and last non nan values in the data array.
+    firstNonNan: int | None
+    lastNonNan: int | None
+    firstNonNan, lastNonNan = get_valid_data_range(data)
 
     # --- we cooked if either is still None after the above.
     if firstNonNan is None or lastNonNan is None:
